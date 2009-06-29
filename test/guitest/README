@@ -1,0 +1,56 @@
+guitest
+=======
+
+Version 0.3 (released 2005-11-13)
+
+Home page: http://gintas.pov.lt/guitest
+
+
+About
+-----
+
+guitest is a helper library for unit-testing GUI applications written
+in Python.
+
+
+License
+-------
+
+guitest is available on the MIT License, see the file LICENSE for
+the complete text.
+
+
+Getting the latest version
+--------------------------
+
+To get the latest development version you will need to install darcs,
+David's Revision Control System (http://abridgegame.org/darcs/).  Then
+you can retrieve the tree by executing the following command:
+
+  darcs get http://gintas.pov.lt/darcs/guitest
+
+(Note that you may easily send your patches to me by using `darcs record`
+to create and store modifications and then `darcs send` to send them
+by e-mail.)
+
+
+Installation
+------------
+
+Invoke `python setup.py install` to install the library into the local
+python's site-packages directory.  Alternatively you may simply copy the
+guitest subdirectory to your project's main source directory.
+
+
+Usage
+-----
+
+See python scripts in the examples subdirectory.  There is no real
+documentation yet, you may want to look into the EuroPython 2005 presentation
+in OpenOffice.org Impress format (ep2005.sxi) which has a broad overview.
+Doctests (see guitest/tests/*.py), although verbose, may be useful as
+they are always up to date.
+
+
+Gintautas Miliauskas <gintas@pov.lt>
+Last update: 2005-11-13
