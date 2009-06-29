@@ -50,7 +50,7 @@ install: build
 	#$(MAKE) install DESTDIR=$(CURDIR)/debian/mintupload
 	mkdir -p $(CURDIR)/debian/mintupload
 	cp -r $(CURDIR)/doc $(CURDIR)/debian/mintupload/usr/share/
-
+	cp -r $(CURDIR)/test $(CURDIR)/debian/mintupload-dev/usr/lib/linuxmint/mintUpload/
 # Build architecture-independent files here.
 binary-indep: build install
 # We have nothing to do by default.
