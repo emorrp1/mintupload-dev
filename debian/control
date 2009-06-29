@@ -1,0 +1,12 @@
+Source: mintupload-dev
+Section: admin
+Priority: optional
+Maintainer: Philip Morrell <mintupload.emorrp1@mamber.net>
+Build-Depends: debhelper (>= 5)
+Standards-Version: 3.7.2
+
+Package: mintupload-dev
+Architecture: all
+Depends: mintupload
+Description: Development files for mintUpload
+ mintUpload allow you to upload files on the Internet. This makes it easier to share or send big files which would not fit in an email. 
