@@ -7,6 +7,6 @@ Standards-Version: 3.7.2
 
 Package: mintupload-dev
 Architecture: all
-Depends: mintupload python-epydoc
+Depends: mintupload, python-epydoc
 Description: Development files for mintUpload
  mintUpload allow you to upload files on the Internet. This makes it easier to share or send big files which would not fit in an email. 
