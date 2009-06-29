@@ -1,0 +1,10 @@
+TOC:
+* guitest is needed for the gtk testing. for more information, look at the README in the guitest folder
+* test_service.py: tests 
+
+
+USAGE:
+starting a test is quite easy
+# python test_*.py
+where * represents the test you want to start.
+
