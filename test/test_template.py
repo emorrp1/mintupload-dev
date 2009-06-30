@@ -5,7 +5,7 @@ import gtk.gdk
 from guitest.gtktest import GtkTestCase, guistate, setUp, tearDown
 from guitest.utils import mainloop_handler
 
-class TestRemplate(unittest.TestCase):
+class TestTemplate(unittest.TestCase):
 	'''Template for unittests'''
 
 	def testFeature1(self):
@@ -22,5 +22,5 @@ if __name__ == '__main__':
 	mintUpload = mintUploadTesting.getMintUpload()
 	mintUploadCore = mintUploadTesting.getMintUploadCore()
 	print "--- start tests---"
-	suite = unittest.TestLoader().loadTestsFromTestCase(TestDefaultService)
+	suite = unittest.TestLoader().loadTestsFromTestCase(TestTemplate)
 	unittest.TextTestRunner(verbosity=2).run(suite)
