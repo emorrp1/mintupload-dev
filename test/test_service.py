@@ -9,7 +9,7 @@ class TestDefaultService(unittest.TestCase):
 	'''TestCases for the Default mintUpload Service'''
 
 	def testFTPRunning(self):
-		'''Checks if FTP is Running'''
+		'''Check if FTP is Running'''
 		from ftplib import FTP
 		try:
 			ftp = FTP('linuxmint.com')   # connect to host, default port
@@ -65,6 +65,9 @@ class TestDefaultService(unittest.TestCase):
 
 
 if __name__ == '__main__':
+	import environment
+	mintUpload = environment.getMintUpload()
+	mintUploadCore = environment.getMintUploadCore()
+	print "--- start tests---"
 	suite = unittest.TestLoader().loadTestsFromTestCase(TestDefaultService)
 	unittest.TextTestRunner(verbosity=2).run(suite)
-
