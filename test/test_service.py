@@ -65,9 +65,6 @@ class TestDefaultService(unittest.TestCase):
 
 
 if __name__ == '__main__':
-	import environment
-	mintUpload = environment.getMintUpload()
-	mintUploadCore = environment.getMintUploadCore()
 	print "--- start tests---"
 	suite = unittest.TestLoader().loadTestsFromTestCase(TestDefaultService)
 	unittest.TextTestRunner(verbosity=2).run(suite)
