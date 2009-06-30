@@ -1,44 +1,70 @@
 #!/usr/bin/env python
 
-"""doctest utilising test and guitest for mintUpload"""
-
 import unittest
-import doctest
 import gtk.gdk
 from guitest.gtktest import GtkTestCase, guistate, setUp, tearDown
 from guitest.utils import mainloop_handler
 
-def doctest_defaultService():
-	"""Checks the default Service
+class TestDefaultService(unittest.TestCase):
+	'''TestCases for the Default mintUpload Service'''
 
-	Check the free space script:
-		>>> import urllib
-		>>> filehandle = urllib.urlopen("http://files.mint-space.com/getfreespace.php")
-		>>> text = filehandle.read()
+	def testFTPRunning(self):
+		'''Checks if FTP is Running'''
+		from ftplib import FTP
+		try:
+			ftp = FTP('linuxmint.com')   # connect to host, default port
+			ftp.login('sef0i34vppp','F873uioweBV')
+		except Exception, e:
+			self.fail(e)
 
-	Do we get a response
-		>>> type(text) is str
-		True
+	def testHTTPRunning(self):
+		'''Check the mint-space server'''
+		import urllib2
+		try:
+			urllib2.urlopen("http://files.mint-space.com/")
+		except urllib2.HTTPError, e:
+			if e.code == 401:
+				self.fail('401: not authorized')
+			elif e.code == 403:
+				self.fail('403: forbidden')
+			elif e.code == 404:
+				self.fail('404: not found')
+			elif e.code == 503:
+				self.fail('503: service unavailable')
+			else:
+				self.fail('unknown error')
 
-	Parse/split the response. We expect 2 integer, seperated with a '/'
-		>>> splits = text.split('/')
-		>>> len(splits)
-		2
+	def testFreeSpaceScript(self):
+		'''Check the free space script'''
+		import urllib2
+		try:
+			filehandle = urllib2.urlopen("http://files.mint-space.com/getfreespace.php")
+		except urllib2.HTTPError, e:
+			if e.code == 401:
+				self.fail('401: not authorized')
+			elif e.code == 403:
+				self.fail('403: forbidden')
+			elif e.code == 404:
+				self.fail('404: not found')
+			elif e.code == 503:
+				self.fail('503: service unavailable')
+			else:
+				self.fail('unknown error')
+		else:
+			text = filehandle.read()
+			#Do we get a response
+			self.assertTrue(type(text) is str)
 
-	Check if available space is a sane output
-		>>> type(splits[0]) is int
-		True
-	
-	Check if max space is a sane output
-		>>> type(splits[1]) is int
-		True
-"""
+			#Parse/split the response. We expect 2 integer, seperated with a '/'
+			splits = text.split('/')
+			self.assertEqual(len(splits), 2, "expected only 2 numbers as response")
 
-def test_suite():
-    # Note: import and use setUp_param instead of setUp if you need to specify
-    # custom overrides or logging hooks.  See DoctestHelper.setUp_param().
-    return doctest.DocTestSuite(setUp=setUp, tearDown=tearDown)
+			#Check if available space and max space is a sane output
+			self.assertTrue(type(splits[0]) is int, 'available space is no number')
+			self.assertTrue(type(splits[1]) is int, 'max space is no number')
 
 
 if __name__ == '__main__':
-    unittest.main(defaultTest='test_suite')
+	suite = unittest.TestLoader().loadTestsFromTestCase(TestDefaultService)
+	unittest.TextTestRunner(verbosity=2).run(suite)
+
