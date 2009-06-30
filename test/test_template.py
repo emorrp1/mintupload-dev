@@ -18,9 +18,19 @@ class TestTemplate(unittest.TestCase):
 
 
 if __name__ == '__main__':
-	import mintUploadTesting
-	mintUpload = mintUploadTesting.getMintUpload()
-	mintUploadCore = mintUploadTesting.getMintUploadCore()
+	#import mintUploadTesting
+
+	## aditional CLI Arguments:
+	#parser = mintUploadTesting.getOptParser()
+	#parser.add_option("-t", "--test", dest="test", default="", help="this is a test option", metavar="PATH")
+
+	## get parsed CLI Options
+	#options = mintUploadTesting.getOptions()
+	
+	##get mintUpload Modules
+	#mintUpload = mintUploadTesting.getMintUpload()
+	#mintUploadCore = mintUploadTesting.getMintUploadCore()
+
 	print "--- start tests---"
 	suite = unittest.TestLoader().loadTestsFromTestCase(TestTemplate)
 	unittest.TextTestRunner(verbosity=2).run(suite)

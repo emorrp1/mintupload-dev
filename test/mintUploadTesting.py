@@ -1,18 +1,25 @@
 #!/usr/bin/env python
+from optparse import OptionParser
+parser = OptionParser()
+parser.add_option("-p", "--path", dest="basepath", default="", help="relative PATH from the parent directory to the root mintUpload directory. default is empty: the scripts use the parent directory", metavar="PATH")
+
+def getOptParser():
+	return parser
+
 def getMintUpload():
 	return _getMint("mintUpload")
 
 def getMintUploadCore():
 	return _getMint("mintUploadCore")
 
+def getOptions():
+	(options, args) = parser.parse_args()
+	return options
+
 def _getMint(mintModule):
 	import os
 	import sys
-	from optparse import OptionParser
-	parser = OptionParser()
-	parser.add_option("-p", "--path", dest="basepath", default="", help="relative PATH from the parent directory to the root mintUpload directory. default is empty: the scripts use the parent directory", metavar="PATH")
-	(options, args) = parser.parse_args()
-
+	options = getOptions()
 	# to import mintUpload, we need to add the root directory of mintUpload to sys.path so the import can find mintUpload
 	# this script expects to find mintUpload in the parent directory of this script.
 	# for development, its possible to alter the path with the -p parameter if this project is NOT located in the mintUpload root directory (which is the default for development)
