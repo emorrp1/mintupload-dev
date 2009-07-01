@@ -7,7 +7,14 @@ TOC:
 
 
 USAGE:
-starting a test is quite easy
+Starting a test is quite easy:
 # python test_*.py
 where * represents the test you want to start.
 
+In this default configuration, the test scripts look for mintUpload in the parent directory (e.g. /usr/lib/linuxmint/mintupload). It is possible to modify this behavior with the ‘-p PATH’ CLI option. PATH is added at the end of the parent directory to look for mintUpload.
+Example:
+
+    * parent directory = /usr/lib/linuxmint/mintupload/
+    * PATH = ../../../../home/user/mydevelopmentstuff/mintupload
+
+as a result, the scripts look for mintUpload in /home/user/mydevelopmentstuff/mintupload
