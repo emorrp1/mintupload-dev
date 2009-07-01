@@ -1,6 +1,9 @@
 TOC:
 * guitest is needed for the gtk testing. for more information, look at the README in the guitest folder
-* test_service.py: tests 
+* mintUploadTesting.py
+* test_service.py: tests for the default upload service
+* test_template.py: a template to create tests
+* testFile_*.* are files designed for upload tests
 
 
 USAGE:
