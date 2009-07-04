@@ -36,3 +36,6 @@ def _getMint(mintModule):
 		print "ok"
 		return modul
 
+
+if __name__ == '__main__':
+	print "you need to start a test, not this module! look in this directory for files, starting with test ;)"
