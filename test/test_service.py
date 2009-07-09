@@ -21,7 +21,7 @@ class TestDefaultService(unittest.TestCase):
 		'''Check the mint-space server'''
 		import urllib2
 		try:
-			urllib2.urlopen("http://files.mint-space.com/")
+			urllib2.urlopen("http://mint-space.com")
 		except urllib2.HTTPError, e:
 			if e.code == 401:
 				self.fail('401: not authorized')
@@ -58,11 +58,13 @@ class TestDefaultService(unittest.TestCase):
 			#Parse/split the response. We expect 2 integer, seperated with a '/'
 			splits = text.split('/')
 			self.assertEqual(len(splits), 2, "expected only 2 numbers as response")
-
+			splits = map(str.strip,splits)
 			#Check if available space and max space is a sane output
-			self.assertTrue(type(splits[0]) is int, 'available space is no number')
-			self.assertTrue(type(splits[1]) is int, 'max space is no number')
-
+			try:
+				int(splits[0])
+				int(splits[1])
+			except ValueError, e:
+				self.fail(e)
 
 if __name__ == '__main__':
 	print "--- start tests---"
